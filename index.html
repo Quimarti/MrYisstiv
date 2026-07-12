@@ -11,14 +11,14 @@
     <!-- HEADER -->
     <header class="header-principal">
         <div class="logo-container">
-            <h1 class="logo-titulo">MR YISSTIV</h1>
-            <p class="logo-subtitulo">cholados</p>
+            <img src="imagenes/logo.png" alt="MR YISSTIV Cholados" class="logo-imagen">
         </div>
         <nav class="navegacion">
             <a href="#tienda" class="nav-link">Menú</a>
             <a href="#modulo-reservas" class="nav-link">Reservas</a>
-            <a href="#modulo-domicilios" class="nav-link">Domicilios <span class="badge-carrito" id="contador-carrito">0</span></a>
+            <a href="tienda.html" class="nav-link">Tienda <span class="badge-carrito" id="contador-carrito">0</span></a>
             <a href="#modulo-club-puntos" class="nav-link">Club de Puntos</a>
+            <a href="puntos.html" class="nav-link">Mis Puntos</a>
             <button class="nav-sesion" id="btn-nav-sesion" onclick="alTocarBotonSesion()">Iniciar Sesión</button>
         </nav>
         <button class="btn-menu-movil" id="btn-menu-movil">☰</button>
@@ -27,7 +27,7 @@
     <!-- HERO SECTION -->
     <section class="hero">
         <div class="hero-contenido">
-            <h2 class="hero-titulo">¡Bienvenido a MR YISSTIV cholados!</h2>
+            <h2 class="hero-titulo">¡Bienvenido a <span class="hero-titulo-marca">MR YISSTIV cholados</span>!</h2>
             <p class="hero-descripcion">Los mejores cholados, helados y refrescos de Ibague</p>
             <a href="#tienda" class="btn-hero">Ver Menú</a>
         </div>
@@ -575,6 +575,12 @@
                         <button type="submit" class="btn-reservar">Confirmar Reserva</button>
                     </form>
                     <div id="resultado-reserva" class="resultado-reserva"></div>
+
+                    <!-- Solo visible si hay sesión iniciada -->
+                    <div id="panel-mis-reservas" class="panel-mis-reservas" style="display:none;">
+                        <h4>Mis Reservas</h4>
+                        <div id="mis-reservas-lista"></div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -608,7 +614,8 @@
             </div>
 
             <div class="ver-mas-contenedor">
-                <a href="https://wa.me/573105559630" target="_blank" rel="noopener" class="btn-ver-tienda">Pedir por WhatsApp</a>
+                <a href="tienda.html" class="btn-ver-tienda">Finalizar pedido en línea</a>
+                <a href="https://wa.me/573105559630" target="_blank" rel="noopener" class="btn-ver-tienda btn-ver-tienda-outline">Pedir por WhatsApp</a>
             </div>
         </section>
 
@@ -676,6 +683,9 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="ver-mas-contenedor">
+                <a href="puntos.html" class="btn-ver-tienda">Consultar mis puntos</a>
             </div>
         </section>
     </main>
