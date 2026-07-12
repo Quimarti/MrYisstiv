@@ -141,6 +141,15 @@ class ReservaDAO {
     obtenerTodas() {
         return this.reservas;
     }
+
+    obtenerPorDocumento(documento) {
+        return this.reservas.filter(r => r.documento === documento);
+    }
+
+    cancelar(id) {
+        this.reservas = this.reservas.filter(r => r.id !== id);
+        localStorage.setItem('reservas', JSON.stringify(this.reservas));
+    }
 }
 
 class UsuarioDAO {
@@ -416,6 +425,10 @@ function agregarAlCarrito(id, nombre, precio) {
 }
 
 // Formulario de Reservas
+function generarCodigoReserva() {
+    return 'R-' + Math.random().toString(36).slice(2, 7).toUpperCase();
+}
+
 function inicializarFormularioReserva() {
     const formulario = document.getElementById('form-reserva');
     
@@ -435,9 +448,14 @@ function inicializarFormularioReserva() {
             mostrarResultadoReserva('Por favor completa todos los campos', 'error');
             return;
         }
+
+        const sesion = obtenerSesionActual();
+        const codigo = generarCodigoReserva();
         
         const reserva = {
             id: Date.now(),
+            codigo,
+            documento: sesion ? sesion.documento : null,
             nombre,
             telefono,
             fecha,
@@ -450,11 +468,12 @@ function inicializarFormularioReserva() {
         reservaDAO.guardar(reserva);
         
         mostrarResultadoReserva(
-            `¡Reserva confirmada!\n\nNombre: ${nombre}\nFecha: ${fecha}\nHora: ${hora}\nPersonas: ${personas}\nTipo: ${tipoReserva}\n\nTe esperamos en MR YISSTIV cholados.`,
+            `¡Reserva confirmada!\n\nCódigo: ${codigo}\nNombre: ${nombre}\nFecha: ${fecha}\nHora: ${hora}\nPersonas: ${personas}\nTipo: ${tipoReserva}\n\nTe esperamos en MR YISSTIV cholados.`,
             'exito'
         );
         
         formulario.reset();
+        renderizarMisReservas();
     });
 }
 
@@ -467,6 +486,45 @@ function mostrarResultadoReserva(mensaje, tipo) {
     setTimeout(() => {
         resultado.className = 'resultado-reserva';
     }, 5000);
+}
+
+// Panel "Mis Reservas" — solo visible y con datos si hay sesión iniciada
+function renderizarMisReservas() {
+    const panel = document.getElementById('panel-mis-reservas');
+    const lista = document.getElementById('mis-reservas-lista');
+    if (!panel || !lista) return;
+
+    const sesion = obtenerSesionActual();
+
+    if (!sesion) {
+        panel.style.display = 'none';
+        return;
+    }
+
+    panel.style.display = 'block';
+    const misReservas = reservaDAO.obtenerPorDocumento(sesion.documento);
+
+    if (misReservas.length === 0) {
+        lista.innerHTML = '<p class="reservas-vacio">Todavía no tienes reservas activas.</p>';
+        return;
+    }
+
+    lista.innerHTML = misReservas.map(r => `
+        <div class="item-reserva">
+            <div class="item-reserva-info">
+                <div class="item-reserva-codigo">${r.codigo}</div>
+                <div>${r.fecha} · ${r.hora} · ${r.personas} personas</div>
+                <div class="item-reserva-tipo">${r.tipoReserva}</div>
+            </div>
+            <button class="btn-eliminar" onclick="cancelarReserva(${r.id})">Cancelar</button>
+        </div>
+    `).join('');
+}
+
+function cancelarReserva(id) {
+    reservaDAO.cancelar(id);
+    renderizarMisReservas();
+    if (carrito) carrito.mostrarNotificacion('Reserva cancelada', 'info');
 }
 
 // Formulario de Domicilios
@@ -743,6 +801,8 @@ function alTocarBotonSesion() {
 }
 
 function actualizarNavSesion() {
+    renderizarMisReservas();
+
     const boton = document.getElementById('btn-nav-sesion');
     if (!boton) return;
     const sesion = obtenerSesionActual();
