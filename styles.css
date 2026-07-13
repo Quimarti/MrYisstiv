@@ -335,49 +335,49 @@ body {
 
 /* Colores específicos para cada categoría — TODAS con foto real (nombres tal cual los subes) */
 /* CHOLADOS */
-.cholado-1 { background-image: url('imagenes/3cholao.jpg'); background-size: cover; background-position: center; }
-.cholado-2 { background-image: url('imagenes/1Maracuyazo.jpg'); background-size: cover; background-position: center; }
-.cholado-3 { background-image: url('imagenes/2Guanabanazo.jpg'); background-size: cover; background-position: center; }
-.cholado-4 { background-image: url('imagenes/4Lulada.jpg'); background-size: cover; background-position: center; }
-.cholado-5 { background-image: url('imagenes/5salpiqueso.jpg'); background-size: cover; background-position: center; }
-.cholado-6 { background-image: url('imagenes/6maracumango.jpg'); background-size: cover; background-position: center; }
-.cholado-7 { background-image: url('imagenes/7mangazo.jpg'); background-size: cover; background-position: center; }
-.cholado-8 { background-image: url('imagenes/8malteadas.jpg'); background-size: cover; background-position: center; }
-.cholado-9 { background-image: url('imagenes/9banana.jpg'); background-size: cover; background-position: center; }
+.cholado-1 { background-image: url('imagenes/3cholao.png'); background-size: cover; background-position: center; }
+.cholado-2 { background-image: url('imagenes/1Maracuyazo.png'); background-size: cover; background-position: center; }
+.cholado-3 { background-image: url('imagenes/2Guanabanazo.png'); background-size: cover; background-position: center; }
+.cholado-4 { background-image: url('imagenes/4Lulada.png'); background-size: cover; background-position: center; }
+.cholado-5 { background-image: url('imagenes/5salpiqueso.png'); background-size: cover; background-position: center; }
+.cholado-6 { background-image: url('imagenes/6maracumango.png'); background-size: cover; background-position: center; }
+.cholado-7 { background-image: url('imagenes/7mangazo.png'); background-size: cover; background-position: center; }
+.cholado-8 { background-image: url('imagenes/8malteadas.png'); background-size: cover; background-position: center; }
+.cholado-9 { background-image: url('imagenes/9banana.png'); background-size: cover; background-position: center; }
 
 /* CONOS */
-.cono-1 { background-image: url('imagenes/10conovolteado.jpg'); background-size: cover; background-position: center; }
-.cono-2 { background-image: url('imagenes/28ConoSencillo.jpg'); background-size: cover; background-position: center; }
-.cono-3 { background-image: url('imagenes/29ConoDoble.jpg'); background-size: cover; background-position: center; }
+.cono-1 { background-image: url('imagenes/10conovolteado.png'); background-size: cover; background-position: center; }
+.cono-2 { background-image: url('imagenes/28ConoSencillo.png'); background-size: cover; background-position: center; }
+.cono-3 { background-image: url('imagenes/29ConoDoble.png'); background-size: cover; background-position: center; }
 
 /* LIMONADAS */
-.limonada-1 { background-image: url('imagenes/12Brasileña.jpg'); background-size: cover; background-position: center; }
-.limonada-2 { background-image: url('imagenes/13mangobiche.jpg'); background-size: cover; background-position: center; }
-.limonada-3 { background-image: url('imagenes/14cerezada.jpg'); background-size: cover; background-position: center; }
+.limonada-1 { background-image: url('imagenes/12Brasileña.png'); background-size: cover; background-position: center; }
+.limonada-2 { background-image: url('imagenes/13mangobiche.png'); background-size: cover; background-position: center; }
+.limonada-3 { background-image: url('imagenes/14cerezada.png'); background-size: cover; background-position: center; }
 
 /* POSTRES */
-.postre-1 { background-image: url('imagenes/16ensalada.jpg'); background-size: cover; background-position: center; }
-.postre-2 { background-image: url('imagenes/17brownie.jpg'); background-size: cover; background-position: center; }
-.postre-4 { background-image: url('imagenes/18fresas.jpg'); background-size: cover; background-position: center; }
-.postre-5 { background-image: url('imagenes/19tentaciondeq.jpg'); background-size: cover; background-position: center; }
+.postre-1 { background-image: url('imagenes/16ensalada.png'); background-size: cover; background-position: center; }
+.postre-2 { background-image: url('imagenes/17brownie.png'); background-size: cover; background-position: center; }
+.postre-4 { background-image: url('imagenes/18fresas.png'); background-size: cover; background-position: center; }
+.postre-5 { background-image: url('imagenes/19tentaciondeq.png'); background-size: cover; background-position: center; }
 
 /* OBLEAS */
-.oblea-1 { background-image: url('imagenes/15obleas.jpg'); background-size: cover; background-position: center; }
-.oblea-2 { background-image: url('imagenes/15obleas.jpg'); background-size: cover; background-position: center; }
+.oblea-1 { background-image: url('imagenes/15obleas.png'); background-size: cover; background-position: center; }
+.oblea-2 { background-image: url('imagenes/15obleas.png'); background-size: cover; background-position: center; }
 
 /* RASPADOS */
-.raspado-1 { background-image: url('imagenes/20raspado.jpg'); background-size: cover; background-position: center; }
-.raspado-2 { background-image: url('imagenes/21icekiss.jpg'); background-size: cover; background-position: center; }
+.raspado-1 { background-image: url('imagenes/20raspado.png'); background-size: cover; background-position: center; }
+.raspado-2 { background-image: url('imagenes/21icekiss.png'); background-size: cover; background-position: center; }
 
 /* COMIDAS */
-.comida-1 { background-image: url('imagenes/22sandwiche.jpg'); background-size: cover; background-position: center; }
-.comida-2 { background-image: url('imagenes/23quesoasado.jpg'); background-size: cover; background-position: center; }
+.comida-1 { background-image: url('imagenes/22sandwiche.png'); background-size: cover; background-position: center; }
+.comida-2 { background-image: url('imagenes/23quesoasado.png'); background-size: cover; background-position: center; }
 
 /* BEBIDAS */
-.bebida-1 { background-image: url('imagenes/26jugos.jpg'); background-size: cover; background-position: center; }
-.bebida-2 { background-image: url('imagenes/24aguepanela.jpg'); background-size: cover; background-position: center; }
-.bebida-3 { background-image: url('imagenes/27agua.jpg'); background-size: cover; background-position: center; }
-.bebida-4 { background-image: url('imagenes/25migao.jpg'); background-size: cover; background-position: center; }
+.bebida-1 { background-image: url('imagenes/26jugos.png'); background-size: cover; background-position: center; }
+.bebida-2 { background-image: url('imagenes/24aguepanela.png'); background-size: cover; background-position: center; }
+.bebida-3 { background-image: url('imagenes/27agua.png'); background-size: cover; background-position: center; }
+.bebida-4 { background-image: url('imagenes/25migao.png'); background-size: cover; background-position: center; }
 
 /* ============================================
    SELECTOR DE CATEGORÍAS (visual, tipo landing)
@@ -1698,6 +1698,7 @@ body {
     color: var(--color-texto);
     font-size: 1.2rem;
 }
+
 /* ============================================ */
 /* PANTALLA: PEDIDO LISTO */
 /* ============================================ */
