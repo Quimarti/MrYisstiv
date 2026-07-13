@@ -608,14 +608,43 @@ function inicializarFormularioDomicilio() {
         carrito.mostrarNotificacion(`¡Domicilio confirmado!${mensajePuntos}`, 'exito');
         carrito.vaciar();
         formulario.reset();
-        
-        setTimeout(() => {
-            const detallePuntos = documento
-                ? `\n\nPuntos ganados: ${puntosGanados}\nNivel actual: ${nivelActual}`
-                : '';
-            alert(`¡Domicilio Confirmado!\n\nCliente: ${nombre}\nDirección: ${direccion}, ${barrio}\nTeléfono: ${telefono}\n\nTotal: $${total.toLocaleString()}\nMétodo de pago: ${resultadoPago.metodo}${detallePuntos}\n\nRecibirás una confirmación por WhatsApp/SMS.`);
-        }, 500);
+
+        mostrarPantallaPedidoListo(pedido);
     });
+}
+
+// Muestra la pantalla de "pedido listo" con el resumen del pedido confirmado
+function mostrarPantallaPedidoListo(pedido) {
+    const grilla = document.querySelector('.tienda-grid');
+    if (grilla) grilla.style.display = 'none';
+
+    const pantalla = document.getElementById('pantalla-pedido-listo');
+    if (!pantalla) return;
+
+    document.getElementById('pedido-listo-numero').textContent = '#' + String(pedido.id).slice(-5);
+
+    const contenedorItems = document.getElementById('pedido-listo-items');
+    contenedorItems.innerHTML = pedido.items.map(item => `
+        <div class="pedido-listo-item">
+            <div class="pedido-listo-item-nombre">
+                <p>${item.nombre}</p>
+                <p>Cantidad: ${item.cantidad}</p>
+            </div>
+            <span class="pedido-listo-item-precio">$${(item.precio * item.cantidad).toLocaleString()}</span>
+        </div>
+    `).join('');
+
+    document.getElementById('pedido-listo-total-valor').textContent = '$' + pedido.total.toLocaleString();
+    pantalla.style.display = 'block';
+    pantalla.scrollIntoView({ behavior: 'smooth' });
+}
+
+// Oculta la pantalla de "pedido listo" y vuelve a mostrar el formulario de la tienda
+function ocultarPantallaPedidoListo() {
+    const pantalla = document.getElementById('pantalla-pedido-listo');
+    const grilla = document.querySelector('.tienda-grid');
+    if (pantalla) pantalla.style.display = 'none';
+    if (grilla) grilla.style.display = '';
 }
 
 function establecerFechaMinima() {
