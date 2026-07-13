@@ -31,44 +31,45 @@
 
     <main>
         <section class="pagina-tienda">
+            <div class="pedido-listo-caja" id="pantalla-pedido-listo" style="display:none;">
+                <div class="pedido-listo-cabecera">
+                    <span>Tu pedido</span>
+                    <span class="pedido-listo-badge" id="pedido-listo-numero">#00000</span>
+                </div>
+                <div class="pedido-listo-cuerpo">
+                    <div class="pedido-listo-estado">
+                        <div class="pedido-listo-estado-icono">✓</div>
+                        <div>
+                            <h4>Pedido confirmado</h4>
+                            <p>Puedes recogerlo o esperar el domicilio</p>
+                        </div>
+                    </div>
+                    <div class="pedido-timeline">
+                        <div class="paso-timeline">
+                            <div class="paso-circulo">✓</div>
+                            <span class="paso-texto">Confirmado</span>
+                        </div>
+                        <div class="paso-linea"></div>
+                        <div class="paso-timeline">
+                            <div class="paso-circulo actual">●</div>
+                            <span class="paso-texto">Preparando</span>
+                        </div>
+                        <div class="paso-linea"></div>
+                        <div class="paso-timeline">
+                            <div class="paso-circulo" style="background:#ddd;"></div>
+                            <span class="paso-texto">Listo</span>
+                        </div>
+                    </div>
+                    <div class="pedido-listo-lista" id="pedido-listo-items"></div>
+                    <div class="pedido-listo-total">
+                        <span>Total</span>
+                        <span id="pedido-listo-total-valor">$0</span>
+                    </div>
+                    <button class="btn-ver-seguimiento" onclick="ocultarPantallaPedidoListo()">Volver a la tienda</button>
+                </div>
+            </div>
+
             <div class="tienda-grid">
-    <div class="pedido-listo-caja" id="pantalla-pedido-listo" style="display:none;">
-    <div class="pedido-listo-cabecera">
-        <span>Tu pedido</span>
-        <span class="pedido-listo-badge" id="pedido-listo-numero">#00000</span>
-    </div>
-    <div class="pedido-listo-cuerpo">
-        <div class="pedido-listo-estado">
-            <div class="pedido-listo-estado-icono">✓</div>
-            <div>
-                <h4>Pedido confirmado</h4>
-                <p>Puedes recogerlo o esperar el domicilio</p>
-            </div>
-        </div>
-        <div class="pedido-timeline">
-            <div class="paso-timeline">
-                <div class="paso-circulo">✓</div>
-                <span class="paso-texto">Confirmado</span>
-            </div>
-            <div class="paso-linea"></div>
-            <div class="paso-timeline">
-                <div class="paso-circulo actual">●</div>
-                <span class="paso-texto">Preparando</span>
-            </div>
-            <div class="paso-linea"></div>
-            <div class="paso-timeline">
-                <div class="paso-circulo" style="background:#ddd;"></div>
-                <span class="paso-texto">Listo</span>
-            </div>
-        </div>
-        <div class="pedido-listo-lista" id="pedido-listo-items"></div>
-        <div class="pedido-listo-total">
-            <span>Total</span>
-            <span id="pedido-listo-total-valor">$0</span>
-        </div>
-        <button class="btn-ver-seguimiento" onclick="document.getElementById('pantalla-pedido-listo').style.display='none';">Volver a la tienda</button>
-    </div>
-</div>
                 <!-- Resumen del pedido -->
                 <div class="resumen-pedido">
                     <h3>Tu Pedido</h3>
