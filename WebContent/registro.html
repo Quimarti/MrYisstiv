@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - MR YISSTIV cholados</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        body { background: linear-gradient(135deg, #ff00ff 0%, #00ffff 100%); min-height: 100vh; display: flex; align-items: center; justify-content: center; font-family: 'Poppins', sans-serif; padding: 10px; margin: 0; }
+        .registro-container { background: white; border-radius: 16px; padding: 1.5rem 1.5rem; box-shadow: 0 20px 60px rgba(0,0,0,0.3); width: 100%; max-width: 380px; border-top: 4px solid #ff00ff; }
+        .registro-logo { text-align: center; margin-bottom: 0.8rem; }
+        .registro-logo h1 { font-family: 'Pacifico', cursive; color: #ff00ff; font-size: 1.6rem; margin: 0; }
+        .registro-logo p { color: #ffd700; font-family: 'Pacifico', cursive; margin: 0.1rem 0 0; font-size: 0.9rem; }
+        .registro-titulo { text-align: center; font-size: 1.2rem; font-weight: 700; color: #333; margin-bottom: 1rem; }
+        .fila-doble { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+        .campo-registro { margin-bottom: 0.6rem; position: relative; }
+        .campo-registro label { font-weight: 600; color: #ff00ff; margin-bottom: 0.2rem; display: block; font-size: 0.8rem; }
+        .campo-registro input { width: 100%; padding: 0.5rem 0.7rem; border: 2px solid #eee; border-radius: 8px; font-family: 'Poppins', sans-serif; font-size: 0.85rem; box-sizing: border-box; }
+        .campo-registro input:focus { outline: none; border-color: #00ffff; }
+        .campo-password { position: relative; }
+        .btn-ojito { position: absolute; right: 10px; top: 28px; background: none; border: none; cursor: pointer; font-size: 1.1rem; color: #999; padding: 0; z-index: 2; }
+        .btn-ojito:hover { color: #ff00ff; }
+        .campo-password input { padding-right: 2.5rem !important; }
+        .btn-registrar { width: 100%; background: #ff00ff; color: white; border: none; padding: 0.75rem; border-radius: 12px; font-size: 0.95rem; font-weight: 700; cursor: pointer; margin-top: 0.4rem; }
+        .btn-registrar:hover { background: #d400d4; }
+        .registro-pie { text-align: center; font-size: 0.8rem; color: #666; margin-top: 0.8rem; }
+        .registro-pie a { color: #ff00ff; font-weight: 700; text-decoration: none; }
+        .mensaje-error, .mensaje-exito { padding: 0.5rem; border-radius: 8px; margin-bottom: 0.8rem; text-align: center; font-size: 0.8rem; display: none; }
+        .mensaje-error { background: #f8d7da; color: #721c24; }
+        .mensaje-exito { background: #d4edda; color: #155724; }
+    </style>
+</head>
+<body>
+    <div class="registro-container">
+        <div class="registro-logo"><h1>MR YISSTIV</h1><p>cholados</p></div>
+        <h2 class="registro-titulo">Crear mi cuenta</h2>
+        <div class="mensaje-error" id="errorMsg"></div>
+        <div class="mensaje-exito" id="successMsg"></div>
+        <form action="RegistroServlet" method="POST" autocomplete="off">
+            <div class="fila-doble">
+                <div class="campo-registro"><label>Nombres:</label><input type="text" name="nombre" required></div>
+                <div class="campo-registro"><label>Apellidos:</label><input type="text" name="apellidos" required></div>
+            </div>
+            <div class="campo-registro"><label>Correo electrónico:</label><input type="email" name="correo" required></div>
+            <div class="fila-doble">
+                <div class="campo-registro"><label>Cédula:</label><input type="text" name="cedula" required></div>
+                <div class="campo-registro"><label>Teléfono:</label><input type="tel" name="telefono" required pattern="[0-9]{10}"></div>
+            </div>
+            <div class="campo-registro campo-password">
+                <label>Contraseña:</label>
+                <input type="password" name="contrasena" id="contrasena" required minlength="6">
+                <button type="button" class="btn-ojito" onclick="togglePassword('contrasena', this)">👁️</button>
+            </div>
+            <button type="submit" class="btn-registrar">Registrarme</button>
+        </form>
+        <p class="registro-pie">¿Ya tienes cuenta? <a href="login.html">Ya tengo cuenta</a></p>
+    </div>
+    <script>
+        function togglePassword(inputId, btn) {
+            const input = document.getElementById(inputId);
+            if (input.type === 'password') { input.type = 'text'; btn.textContent = '🙈'; }
+            else { input.type = 'password'; btn.textContent = '️'; }
+        }
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('error') === '1') {
+            document.getElementById('errorMsg').textContent = '⚠️ El correo ya está registrado.';
+            document.getElementById('errorMsg').style.display = 'block';
+        } else if (urlParams.get('error') === '2') {
+            document.getElementById('errorMsg').textContent = '⚠️ Error al registrar.';
+            document.getElementById('errorMsg').style.display = 'block';
+        } else if (urlParams.get('exito') === '1') {
+            document.getElementById('successMsg').textContent = '¡Registro exitoso!';
+            document.getElementById('successMsg').style.display = 'block';
+            setTimeout(() => window.location.href = 'login.html', 2000);
+        }
+    </script>
+</body>
+</html>

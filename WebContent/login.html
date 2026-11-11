@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión - MR YISSTIV cholados</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        body { background: linear-gradient(135deg, #ff00ff 0%, #00ffff 100%); min-height: 100vh; display: flex; align-items: center; justify-content: center; font-family: 'Poppins', sans-serif; padding: 10px; margin: 0; }
+        .login-container { background: white; border-radius: 16px; padding: 1.5rem 1.5rem; box-shadow: 0 20px 60px rgba(0,0,0,0.3); width: 100%; max-width: 380px; border-top: 4px solid #ff00ff; }
+        .login-logo { text-align: center; margin-bottom: 0.8rem; }
+        .login-logo h1 { font-family: 'Pacifico', cursive; color: #ff00ff; font-size: 1.6rem; margin: 0; }
+        .login-logo p { color: #ffd700; font-family: 'Pacifico', cursive; margin: 0.1rem 0 0; font-size: 0.9rem; }
+        .login-titulo { text-align: center; font-size: 1.2rem; font-weight: 700; color: #333; margin-bottom: 1rem; }
+        .campo-login { margin-bottom: 0.8rem; }
+        .campo-login label { font-weight: 600; color: #ff00ff; margin-bottom: 0.3rem; display: block; font-size: 0.85rem; }
+        .campo-login input { width: 100%; padding: 0.6rem 0.7rem; border: 2px solid #eee; border-radius: 8px; font-family: 'Poppins', sans-serif; font-size: 0.9rem; box-sizing: border-box; }
+        .campo-login input:focus { outline: none; border-color: #00ffff; }
+        .campo-password { position: relative; }
+        .btn-ojito { position: absolute; right: 10px; top: 32px; background: none; border: none; cursor: pointer; font-size: 1.1rem; color: #999; padding: 0; z-index: 2; }
+        .btn-ojito:hover { color: #ff00ff; }
+        .campo-password input { padding-right: 2.5rem !important; }
+        .btn-ingresar { width: 100%; background: #ff00ff; color: white; border: none; padding: 0.8rem; border-radius: 12px; font-size: 1rem; font-weight: 700; cursor: pointer; margin-top: 0.5rem; }
+        .btn-ingresar:hover { background: #d400d4; }
+        .login-pie { text-align: center; font-size: 0.85rem; color: #666; margin-top: 1rem; }
+        .login-pie a { color: #ff00ff; font-weight: 700; text-decoration: none; }
+        .mensaje-error { padding: 0.6rem; border-radius: 8px; margin-bottom: 0.8rem; text-align: center; font-size: 0.85rem; display: none; background: #f8d7da; color: #721c24; }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-logo"><h1>MR YISSTIV</h1><p>cholados</p></div>
+        <h2 class="login-titulo">Iniciar Sesión</h2>
+        <div class="mensaje-error" id="errorMsg"></div>
+        <form action="LoginServlet" method="POST">
+            <div class="campo-login">
+                <label>Correo electrónico:</label>
+                <input type="email" name="correo" required placeholder="tu@email.com">
+            </div>
+            <div class="campo-login campo-password">
+                <label>Contraseña:</label>
+                <input type="password" name="contrasena" id="contrasena" required placeholder="••••••••">
+                <button type="button" class="btn-ojito" onclick="togglePassword('contrasena', this)">👁️</button>
+            </div>
+            <button type="submit" class="btn-ingresar">Ingresar</button>
+        </form>
+        <p class="login-pie">¿No tienes cuenta? <a href="registro.html">Crear una cuenta</a></p>
+    </div>
+    <script>
+        function togglePassword(inputId, btn) {
+            const input = document.getElementById(inputId);
+            if (input.type === 'password') { input.type = 'text'; btn.textContent = '🙈'; }
+            else { input.type = 'password'; btn.textContent = '👁️'; }
+        }
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('error') === '1') {
+            document.getElementById('errorMsg').textContent = '⚠️ Correo o contraseña incorrectos';
+            document.getElementById('errorMsg').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - MR YISSTIV Cholados</title>
+    <style>
+        body {
+            background-color: #0A0A0A;
+            color: #FFFFFF;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .contenedor {
+            background-color: #1A1A1A;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px #FF1493;
+            text-align: center;
+            width: 300px;
+        }
+        h1 { color: #FF1493; font-family: 'Montserrat', sans-serif; }
+        input {
+            width: 90%; padding: 10px; margin: 10px 0;
+            border-radius: 5px; border: 1px solid #9400D3;
+            background: #0A0A0A; color: white;
+        }
+        button {
+            width: 100%; padding: 10px; margin-top: 15px;
+            background-color: #FF1493; color: white;
+            border: none; border-radius: 5px; cursor: pointer;
+            font-weight: bold; font-size: 16px;
+        }
+        button:hover { box-shadow: 0 0 15px #FF1493; }
+        .error { color: red; font-size: 12px; }
+    </style>
+</head>
+<body>
+    <div class="contenedor">
+        <h1>MR YISSTIV</h1>
+        <h2>Iniciar Sesión</h2>
+        
+        <!-- FORMULARIO QUE USA MÉTODO POST -->
+        <form action="LoginServlet" method="POST">
+            <input type="email" name="correo" placeholder="Correo electrónico" required>
+            <input type="password" name="contrasena" placeholder="Contraseña" required>
+            <button type="submit">INGRESAR</button>
+        </form>
+        
+        <!-- Mensaje de error si falla -->
+        <script>
+            if (window.location.search.includes("error=1")) {
+                document.write('<p class="error">Correo o contraseña incorrectos</p>');
+            }
+        </script>
+    </div>
+</body>
+</html>
